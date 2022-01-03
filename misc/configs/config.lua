@@ -125,6 +125,7 @@ lvim.plugins = {
       cmd = "TroubleToggle",
     },
     {"lambdalisue/suda.vim"},
+    {"vbe0201/vimdiscord"},
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
