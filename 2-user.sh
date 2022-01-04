@@ -47,9 +47,7 @@ PKGS=(
 'ocs-url' 
 'plasma-pa'
 'rider-eap'
-'runelite'
 'snap-pac'
-'visual-studio-code-bin'
 )
 
 for PKG in "${PKGS[@]}"; do
