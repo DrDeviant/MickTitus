@@ -204,6 +204,10 @@ elif lspci | grep -E "Integrated Graphics Controller"; then
 fi
 
 read -p "Please enter username:" username
+
+username=${username,,}
+
+
 if [ $(whoami) = "root"  ];
 then
     useradd -m -G wheel,docker -s /bin/zsh $username 
