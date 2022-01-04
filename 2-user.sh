@@ -28,6 +28,7 @@ git clone "https://github.com/tmux-plugins/tpm" $HOME/.local/plugin_managers/tpm
 ln -sf "$HOME/MickTitus/misc/dotfiles/.zshrc" "$HOME/.zshrc" 
 ln -sf "$HOME/MickTitus/misc/configs/kitty.conf" "$HOME/.config/kitty/kitty.conf"
 mkdir $HOME/.config/npm-global
+export PATH=~/.config/npm-global/bin:$PATH
 npm config set prefix '$HOME/.config/npm-global'
 source $HOME/.zshrc
 

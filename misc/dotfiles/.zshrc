@@ -26,6 +26,7 @@ eval "$(ssh-agent -s)" &> /dev/null
 ssh-add -S github $HOME/.ssh/github &> /dev/null
 ssh-add -S services $HOME/.ssh/external &> /dev/null
 
+export PATH="$HOME/.config/npm-global:$PATH"
 export PATH="$HOME/.npm-global/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
