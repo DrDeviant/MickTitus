@@ -21,12 +21,13 @@ cd ${HOME}/yay
 makepkg -si --noconfirm
 cd $HOME
 rm -rf yay
-mkdir $HOME/.local/plugin_managers
+mkdir -p $HOME/.local/plugin_managers
 git clone "https://github.com/ohmyzsh/ohmyzsh" $HOME/.local/plugin_managers/ohmyzsh
 git clone "https://github.com/tmux-plugins/tpm" $HOME/.local/plugin_managers/tpm
+mkdir -p $HOME/.config/kitty/
 ln -sf "$HOME/MickTitus/misc/dotfiles/.zshrc" "$HOME/.zshrc" 
 ln -sf "$HOME/MickTitus/misc/configs/kitty.conf" "$HOME/.config/kitty/kitty.conf"
-mkdir $HOME/.config/npm-global
+mkdir -p $HOME/.config/npm-global
 export PATH=~/.config/npm-global/bin:$PATH
 npm config set prefix '$HOME/.config/npm-global'
 source $HOME/.zshrc
