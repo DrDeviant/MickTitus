@@ -57,7 +57,6 @@ sed -i 's/^#Para/Para/' /etc/pacman.conf
 #Enable multilib
 sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 pacman -Sy --noconfirm
-echo "Color" >> /etc/pacman.conf
 
 echo -e "\nInstalling Base System\n"
 
