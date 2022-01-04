@@ -203,6 +203,8 @@ fi
 
 read -p "Please enter username:" username
 username=${username,,}
+echo "username=$username" >> ${HOME}/MickTitus/install.conf
+
 if [ $(whoami) = "root"  ];
 then
     useradd -m -G wheel,docker -s /bin/zsh $username 
@@ -215,51 +217,3 @@ else
 	echo "You are already a user proceed with aur installs"
 fi
 
-echo "CLONING: YAY"
-cd $HOME
-git clone "https://aur.archlinux.org/yay.git"
-cd ${HOME}/yay
-makepkg -si --noconfirm
-cd $HOME
-rm -rf yay
-mkdir $HOME/.local/plugin_managers
-git clone "https://github.com/ohmyzsh/ohmyzsh" $HOME/.local/plugin_managers/ohmyzsh
-git clone "https://github.com/tmux-plugins/tpm" $HOME/.local/plugin_managers/tpm
-ln -sf "$HOME/MickTitus/misc/dotfiles/.zshrc" "$HOME/.zshrc" 
-ln -sf "$HOME/MickTitus/misc/configs/kitty.conf" "$HOME/.config/kitty/kitty.conf"
-mkdir $HOME/.config/npm-global
-export PATH=~/.config/npm-global/bin:$PATH
-npm config set prefix '$HOME/.config/npm-global'
-source $HOME/.zshrc
-
-sh $HOME/MickTitus/LunarVim.sh
-ln -sf $HOME/MickTitus/misc/configs/config.lua $HOME/.config/lvim/config.lua
-lvim -c PackerSync
-
-PKGS=(
-'ant-dracula-kde-theme-git'
-'brave-bin' 
-'candy-icons-git'
-'dbeaver'
-'dracula-gtk-theme'
-'dracula-grub-theme-git'
-'libdbusmenu-glib'
-'noto-fonts-emoji'
-'ocs-url' 
-'plasma-pa'
-'rider-eap'
-'snap-pac'
-)
-
-for PKG in "${PKGS[@]}"; do
-    yay -S --noconfirm $PKG
-done
-
-export PATH=$PATH:~/.local/bin
-pip install konsave thefuck black isort
-konsave -i "$HOME/MickTitus/kde.knsv"
-sleep 1
-konsave -a kde
-
-echo -e "\nDone!\n"
-exit
