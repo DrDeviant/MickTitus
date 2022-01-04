@@ -26,7 +26,6 @@ mkdir $HOME/.local/plugin_managers
 git clone "https://github.com/ohmyzsh/ohmyzsh" $HOME/.local/plugin_managers/ohmyzsh
 git clone "https://github.com/tmux-plugins/tpm" $HOME/.local/plugin_managers/tpm
 ln -sf "$HOME/MickTitus/misc/dotfiles/.zshrc" "$HOME/.zshrc" 
-ln -sf "$HOME/MickTitus/misc/dotfiles/.tmux.conf" "$HOME/.tmux.conf"
 ln -sf "$HOME/MickTitus/misc/configs/kitty.conf" "$HOME/.config/kitty/kitty.conf"
 mkdir $HOME/.config/npm-global
 npm config set prefix '$HOME/.config/npm-global'
