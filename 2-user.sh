@@ -47,7 +47,7 @@ PKGS=(
 'noto-fonts-emoji'
 'ocs-url' 
 'plasma-pa'
-'rider-eap'
+'rider'
 'snap-pac'
 )
 
