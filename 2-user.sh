@@ -56,7 +56,7 @@ for PKG in "${PKGS[@]}"; do
 done
 
 export PATH=$PATH:~/.local/bin
-pip install konsave thefuck black isort
+pip install konsave black isort
 konsave -i "$HOME/MickTitus/kde.knsv"
 sleep 1
 konsave -a kde

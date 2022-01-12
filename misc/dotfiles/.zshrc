@@ -1,117 +1,56 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# Path to your oh-my-zsh installation.
 export ZSH="$HOME/.local/plugin_managers/ohmyzsh"
-
 ZSH_THEME="candy"
 
-
-
 alias vim="lvim"
-alias py310="python3.10"
-alias ifind="sudo find | grep"
-alias shitdown="systemctl poweroff"
-alias path="echo $PATH"
-alias tms="tmux source $HOME/.tmux.conf"
+
+#Pacman and Yay
 alias pacman="yay"
-alias ytdlx="youtube-dl -x --embed-thumbnail --audio-format mp3"
-alias yeeter="sudo rm -rf"
-alias neofetch="fastfetch"
-alias micktitus="cd $HOME/MickTitus/"
-alias wakeup="docker-compose up -d"
+alias cleanup='sudo pacman -Rns $(pacman -Qtdq)' # remove orphaned packages
 
+#Get top process eating memory
+alias psmem='ps auxf | sort -nr -k 4'
+alias psmem10='ps auxf | sort -nr -k 4 | head -10'
 
+#Get top process eating cpu ##
+alias pscpu='ps auxf | sort -nr -k 3'
+alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
+
+#Git
+alias addup='git add -u'
+alias addall='git add .'
+alias branch='git branch'
+alias checkout='git checkout'
+alias clone='git clone'
+alias commit='git commit -m'
+alias fetch='git fetch'
+alias pull='git pull origin'
+alias push='git push origin'
+alias status='git status'
+alias tag='git tag'
+alias newtag='git tag -a'
+
+#Get error messages
+alias jctl="journalctl -p 3 -xb"
+alias awesome-logs='vim ~/.local/share/sddm/xorg-session.log'
+
+#Distro info
+alias distro='cat /etc/*-release'
+alias myip='curl ipv4.icanhazip.com'
+
+# Adding SSH keys to agent the "Ghetto" way
 eval "$(ssh-agent -s)" &> /dev/null
 ssh-add -S github $HOME/.ssh/github &> /dev/null
 ssh-add -S services $HOME/.ssh/external &> /dev/null
 
+# Things in Path
 export PATH="$HOME/.config/npm-global:$PATH"
 export PATH="$HOME/.npm-global/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
-NPM_PACKAGES="${HOME}/.npm-packages"
+NPM_PACKAGES="${HOME}/.config/npm-packages"
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-
-# Uncomment the following line to change h:wq
-# often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git 
-  archlinux 
-  dotnet
-)
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='lvim'
-else
-  export EDITOR='vim'
-fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-
-eval $(thefuck --alias)
