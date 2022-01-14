@@ -76,7 +76,7 @@ PKGS=(
 'xfce4-power-manager'
 'picom'
 'xclip'
-'lightdm'
+'sddm'
 'nitrogen'
 
 # Audio
