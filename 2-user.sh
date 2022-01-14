@@ -32,33 +32,46 @@ export PATH=~/.config/npm-global/bin:$PATH
 npm config set prefix '$HOME/.config/npm-global'
 source $HOME/.zshrc
 
+mkdir -p ~/.config/rofi
+cp $HOME/.config/awesome/theme/config.rasi ~/.config/rofi/config.rasi
+sed -i '/@import/c\@import "'$HOME'/.config/awesome/theme/sidebar.rasi"' ~/.config/rofi/config.rasi
+
+ln -sf $HOME/MickTitus/misc/configs/awesome $HOME/.config/
+
 sh $HOME/MickTitus/LunarVim.sh
 ln -sf $HOME/MickTitus/misc/configs/config.lua $HOME/.config/lvim/config.lua
 lvim -c PackerSync
 
 PKGS=(
-'ant-dracula-kde-theme-git'
-'brave-bin' 
+'awesome'
+'rofi'
+'picom'
+'i3lock-fancy'
+'xclip'
+'polkit-gnome'
+'materia-theme'
+'lxappearance'
+'flameshot' 
+'pnmixer' 
+'network-manager-applet'
+'xfce4-power-manager'
+'qt5-styleplugins'
+'papirus-icon-theme'
+
+  'brave-bin' 
 'candy-icons-git'
 'dbeaver'
 'dracula-gtk-theme'
 'dracula-grub-theme-git'
-'libdbusmenu-glib'
 'noto-fonts-emoji'
-'ocs-url' 
-'plasma-pa'
 'rider'
-'snap-pac'
 )
 
 for PKG in "${PKGS[@]}"; do
-    yay -S --noconfirm $PKG
+    yay -S --noconfirm --needed $PKG
 done
 
 export PATH=$PATH:~/.local/bin
-pip install konsave black isort
-konsave -i "$HOME/MickTitus/kde.knsv"
-sleep 1
-konsave -a kde
+pip install black isort
 
 echo -e "\nDo
