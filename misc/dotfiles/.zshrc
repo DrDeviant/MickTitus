@@ -48,8 +48,7 @@ export PATH="$HOME/.npm-global/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
-NPM_PACKAGES="${HOME}/.config/npm-packages"
-
+export PATH="$HOME/.yarn-global:$PATH"
 
 source $ZSH/oh-my-zsh.sh
 

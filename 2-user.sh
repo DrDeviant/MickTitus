@@ -27,16 +27,14 @@ git clone "https://github.com/tmux-plugins/tpm" $HOME/.local/plugin_managers/tpm
 mkdir -p $HOME/.config/kitty/
 ln -sf "$HOME/MickTitus/misc/dotfiles/.zshrc" "$HOME/.zshrc" 
 ln -sf "$HOME/MickTitus/misc/configs/kitty.conf" "$HOME/.config/kitty/kitty.conf"
-mkdir -p $HOME/.config/npm-global
-export PATH=~/.config/npm-global/bin:$PATH
-npm config set prefix '$HOME/.config/npm-global'
-source $HOME/.zshrc
 
 mkdir -p ~/.config/rofi
 cp $HOME/.config/awesome/theme/config.rasi ~/.config/rofi/config.rasi
 sed -i '/@import/c\@import "'$HOME'/.config/awesome/theme/sidebar.rasi"' ~/.config/rofi/config.rasi
 
 ln -sf $HOME/MickTitus/misc/configs/awesome $HOME/.config/
+
+npm install npm
 
 sh $HOME/MickTitus/LunarVim.sh
 ln -sf $HOME/MickTitus/misc/configs/config.lua $HOME/.config/lvim/config.lua
