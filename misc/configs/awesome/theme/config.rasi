@@ -2,6 +2,6 @@
 
 configuration {
   show-icons:         true;
-  icon-theme:         "Candy Icon";
+  icon-theme:         "candy-icons";
 }
 @import "$HOME/.config/awesome/theme/sidebar.rasi"

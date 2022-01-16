@@ -5,6 +5,7 @@ alias vim="lvim"
 
 #Pacman and Yay
 alias pacman="yay"
+alias upgrade="yay -Syu"
 alias cleanup='sudo pacman -Rns $(pacman -Qtdq)' # remove orphaned packages
 
 #Get top process eating memory
