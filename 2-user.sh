@@ -31,7 +31,7 @@ ln -sf "$HOME/MickTitus/misc/configs/awesome" "$HOME/.config/"
 mkdir -p $HOME/.config/rofi
 cp $HOME/.config/awesome/theme/config.rasi $HOME/.config/rofi/config.rasi
 sed -i '/@import/c\@import "'$HOME'/.config/awesome/theme/sidebar.rasi"' ~/.config/rofi/config.rasi
-
+nitrogen --set-auto $HOME/MickTitus/misc/wall.jpg
 
 npm install npm
 
