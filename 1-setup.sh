@@ -1,3 +1,4 @@
+1
 #!/usr/bin/env bash
 #-------------------------------------------------------------------------------------------------------------------------------------------
 # ██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
@@ -66,7 +67,6 @@ PKGS=(
 # Xorg Display Stuff
 'xorg'
 'xorg-server'
-'xorg-apps'
 'xorg-xinit'
 'xorg-xinput'
 'mesa'
@@ -117,7 +117,6 @@ PKGS=(
 'flex'
 'fuse2'
 'fuse3'
-'fuseiso'
 'gcc'
 'gptfdisk'
 'grub'
@@ -147,16 +146,12 @@ PKGS=(
 'pkgconf'
 'python-pip'
 'rsync'
-'sddm'
 'sshfs'
 'snapper'
 'sudo'
 'ttf-iosevka-nerd'
 'unrar'
 'unzip'
-'usbutils'
-'wget'
-'which'
 'xdg-user-dirs'
 'zip'
 'zsh'
