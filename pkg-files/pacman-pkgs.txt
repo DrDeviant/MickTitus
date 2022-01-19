@@ -14,6 +14,7 @@ xclip
 lightdm
 lightdm-gtk-greeter
 nitrogen
+feh
 
 # Audio
 pipewire-pulse
