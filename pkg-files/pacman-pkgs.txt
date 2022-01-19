@@ -12,7 +12,6 @@ xfce4-power-manager
 picom
 xclip
 lightdm
-lightdm-gtk-greeter
 nitrogen
 feh
 
