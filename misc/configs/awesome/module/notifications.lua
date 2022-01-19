@@ -9,10 +9,10 @@ naughty.config.spacing = 8
 
 naughty.config.defaults.timeout = 5
 naughty.config.defaults.screen = 1
-naughty.config.defaults.position = 'bottom_left'
+naughty.config.defaults.position = 'top_right'
 naughty.config.defaults.margin = dpi(16)
 naughty.config.defaults.ontop = true
-naughty.config.defaults.font = 'Roboto Regular 10'
+naughty.config.defaults.font = 'Iosevka Nerd Font Mono 10'
 naughty.config.defaults.icon = nil
 naughty.config.defaults.icon_size = dpi(32)
 naughty.config.defaults.shape = gears.shape.rounded_rect

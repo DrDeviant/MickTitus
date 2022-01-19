@@ -22,8 +22,8 @@ local awesome_overrides =
   function(theme)
   theme.dir = os.getenv('HOME') .. '/.config/awesome/theme'
   theme.icons = theme.dir .. '/icons/'
-  -- theme.wallpaper = theme.dir .. '/wallpapers/DarkCyan.png'
-  theme.wallpaper = '#e0e0e0'
+  theme.wallpaper = theme.dir .. '/wall.jpg'
+  -- theme.wallpaper = '#e0e0e0'
   theme.font = 'Iosevka Nerd Font Mono 10'
   theme.title_font = 'Iosevka Nerd Font Mono 14'
 

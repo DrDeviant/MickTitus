@@ -4,4 +4,4 @@ configuration {
   show-icons:         true;
   icon-theme:         "candy-icons";
 }
-@import "$HOME/.config/awesome/theme/sidebar.rasi"
+@theme "$HOME/.config/awesome/theme/sidebar.rasi"
