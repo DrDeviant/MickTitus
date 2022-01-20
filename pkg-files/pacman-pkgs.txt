@@ -14,6 +14,7 @@ xclip
 lightdm
 nitrogen
 feh
+lxrandr
 
 # Audio
 pipewire-pulse
@@ -38,7 +39,7 @@ npm
 rust
 
 
-
+accountsservice
 autoconf 
 automake 
 base
