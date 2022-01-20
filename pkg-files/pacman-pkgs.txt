@@ -14,7 +14,7 @@ xclip
 lightdm
 nitrogen
 feh
-lxrandr
+arandr
 
 # Audio
 pipewire-pulse
