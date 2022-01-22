@@ -43,6 +43,7 @@ accountsservice
 autoconf 
 automake 
 base
+gnome-keyring
 bind
 btrfs-progs
 discord
