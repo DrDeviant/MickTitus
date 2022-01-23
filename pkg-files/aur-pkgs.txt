@@ -3,13 +3,14 @@ rofi
 libgnome-keyring
 picom
 i3lock-fancy
+pasystray
+pavucontrol
 xclip
 polkit-gnome
 materia-theme
 lxappearance
 lightdm-webkit-theme-aether
 flameshot 
-pnmixer
 network-manager-applet
 xfce4-power-manager
 qt5-styleplugins
