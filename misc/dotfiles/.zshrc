@@ -3,6 +3,8 @@ ZSH_THEME="candy"
 
 alias vim="lvim"
 
+echo "rht-vmctl start all"
+
 #Pacman and Yay
 alias pacman="yay"
 alias upgrade="yay -Syu"
