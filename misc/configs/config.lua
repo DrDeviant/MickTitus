@@ -98,7 +98,7 @@ lvim.builtin.dashboard.custom_header = {
 
 
 -- ---@usage disable automatic installation of servers
-lvim.lsp.automatic_servers_installation = false
+lvim.lsp.automatic_servers_installation = true
 
 -- ---@usage Select which servers should be configured manually. Requires `:LvimCacheRest` to take effect.
 -- See the full default list `:lua print(vim.inspect(lvim.lsp.override))`

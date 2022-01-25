@@ -12,11 +12,19 @@ xfce4-power-manager
 picom
 xclip
 lightdm
-nitrogen
+polkit-gnome
 feh
-arandr
+flameshot 
+network-manager-applet
+xfce4-power-manager
+noto-fonts-emoji
 pamixer
-  
+rofi  
+picom
+pasystray
+pavucontrol
+lxappearance
+
 
 # Audio
 pipewire-pulse
@@ -73,7 +81,7 @@ libtool
 linux-firmware
 linux-zen
 linux-zen-headers
-lso'
+lsof
 m4
 make
 networkmanager
