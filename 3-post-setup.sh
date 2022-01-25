@@ -51,13 +51,6 @@ echo -ne "
 systemctl enable lightdm.service
 echo -ne "
 -------------------------------------------------------------------------
-                    Setting up LightDM Theme
--------------------------------------------------------------------------
-"
-# Later
-
-echo -ne "
--------------------------------------------------------------------------
                     Enabling Essential Services
 -------------------------------------------------------------------------
 "
@@ -79,7 +72,9 @@ sed -i 's/^%wheel ALL=(ALL) NOPASSWD: ALL/# %wheel ALL=(ALL) NOPASSWD: ALL/' /et
 sed -i 's/^# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
 
 rm -r /root/MickTitus
-rm -r /home/$USERNAME/MickTitus
+
+# I rely in this folder so no
+# rm -r /home/$USERNAME/MickTitus
 
 # Replace in the same state
 cd $pwd

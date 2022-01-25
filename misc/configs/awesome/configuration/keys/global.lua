@@ -12,15 +12,15 @@ local globalKeys =
   -- Hotkeys
   awful.key({modkey}, 'F1', hotkeys_popup.show_help, {description = 'Show help', group = 'awesome'}),
   -- Tag browsing
-  awful.key({modkey}, 'w', awful.tag.viewprev, {description = 'view previous', group = 'tag'}),
-  awful.key({modkey}, 's', awful.tag.viewnext, {description = 'view next', group = 'tag'}),
+  awful.key({modkey}, 's', awful.tag.viewprev, {description = 'view previous', group = 'tag'}),
+  awful.key({modkey}, 'w', awful.tag.viewnext, {description = 'view next', group = 'tag'}),
   awful.key({altkey, 'Control'}, 'Up', awful.tag.viewprev, {description = 'view previous', group = 'tag'}),
   awful.key({altkey, 'Control'}, 'Down', awful.tag.viewnext, {description = 'view next', group = 'tag'}),
   awful.key({modkey}, 'Escape', awful.tag.history.restore, {description = 'go back', group = 'tag'}),
   -- Default client focus
   awful.key(
     {modkey},
-    'd',
+    's',
     function()
       awful.client.focus.byidx(1)
     end,
@@ -41,14 +41,6 @@ local globalKeys =
       awful.spawn('rofi -combi-modi window,drun -show combi -modi combi')
     end,
     {description = 'Main menu', group = 'awesome'}
-  ),
-  awful.key(
-    {altkey},
-    'space',
-    function()
-      awful.spawn('rofi -combi-modi window,drun -show combi -modi combi')
-    end,
-    {description = 'Show main menu', group = 'awesome'}
   ),
   awful.key(
     {modkey, 'Shift'},
@@ -100,14 +92,14 @@ local globalKeys =
     {description = 'Switch to previous window', group = 'client'}
   ),
   -- Programms
-  awful.key(
-    {modkey},
-    'l',
-    function()
-      awful.spawn(apps.default.lock)
-    end,
-    {description = 'Lock the screen', group = 'awesome'}
-  ),
+  -- awful.key(
+  --   {modkey},
+  --   'l',
+  --   function()
+  --     awful.spawn(apps.default.lock)
+  --   end,
+  --   {description = 'Lock the screen', group = 'awesome'}
+  -- ),
   awful.key(
     {modkey},
     'Print',
@@ -304,7 +296,7 @@ local globalKeys =
     {},
     'XF86AudioRaiseVolume',
     function()
-      awful.spawn('amixer -D pulse sset Master 5%+')
+      awful.spawn('pamixer -i 5')
     end,
     {description = 'volume up', group = 'hotkeys'}
   ),
@@ -312,7 +304,7 @@ local globalKeys =
     {},
     'XF86AudioLowerVolume',
     function()
-      awful.spawn('amixer -D pulse sset Master 5%-')
+      awful.spawn('pamixer -d 5')
     end,
     {description = 'volume down', group = 'hotkeys'}
   ),
@@ -320,7 +312,7 @@ local globalKeys =
     {},
     'XF86AudioMute',
     function()
-      awful.spawn('amixer -D pulse set Master 1+ toggle')
+      awful.spawn('pamixer -t')
     end,
     {description = 'toggle mute', group = 'hotkeys'}
   ),
