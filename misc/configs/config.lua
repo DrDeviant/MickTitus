@@ -2,7 +2,7 @@
 lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.colorscheme = "dracula"
-
+lvim.lsp.diagnostics.virtual_text = false
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 -- add your own keymapping
@@ -11,7 +11,6 @@ lvim.leader = "space"
 -- lvim.keys.normal_mode["<leader-w>"] = false
 -- edit a default keymapping
 -- lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
-
 
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
 -- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
@@ -30,6 +29,7 @@ lvim.leader = "space"
 --     ["<C-k>"] = actions.move_selection_previous,
   --   },
 -- }
+-- lvim.builtin.notify
 
 lvim.builtin.which_key.mappings["w"] = {
   name = "+Save",
@@ -78,22 +78,54 @@ lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 lvim.builtin.dashboard.footer = {"dwxenterprises.net"}
 lvim.builtin.dashboard.custom_header = {
-"⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠛⠛⠋⠉⠙⠻⠿⠿⠿⠿⢿⣿⣿⣿⣿⣿⣿",
-"⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃⠄⠄⠄⠄⠄⠄⠄⠄⠹⣿⣿⣶⣶⣦⣬⢹⣿⣿",
-"⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃⠄⠄⠄⣰⣧⡀⠄⠄⠄⠄⠈⢙⡋⣿⣿⣿⢸⣿⣿",
-"⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠄⠄⠰⠼⢯⣿⣿⣦⣄⠄⠄⠄⠈⢡⣿⣿⣿⢸⣿⣿",
-"⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠄⠄⠸⠤⠕⠛⠙⠷⣿⡆⠄⠄⠄⣸⣿⣿⡏⣼⣿⣿",
-"⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⣴⣿⣿⣿⢡⣿⣿⣿",
-"⣿⣿⣿⣿⣿⣿⣿⣿⡟⠄⠄⠄⠄⠄⣄⠄⢀⠄⠄⢀⣤⣾⣿⣿⣿⢃⣾⣿⣿⣿",
-"⣿⣿⣿⣿⣿⣿⠿⣛⣡⣄⣀⠄⠠⢴⣿⣿⡿⣄⣴⣿⣿⣿⣿⣿⢃⣾⣿⣿⣿⣿",
-"⣿⣿⣿⣿⣿⡏⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣩⡽⡁⢸⣿⣿⣿⣿⣿",
-"⣿⣿⣿⣿⣿⢃⣿⣿⢟⣿⣿⣿⣿⣿⣮⢫⣿⣿⣿⣿⣿⣟⢿⠃⠄⢻⣿⣿⣿⣿",
-"⣿⣿⣿⣿⡿⣸⠟⣵⣿⣿⣿⣿⣿⣿⣿⣾⣿⣿⣿⣿⣿⣿⣷⣄⢰⡄⢿⣿⣿⣿",
-"⣿⣿⣿⣿⡇⠏⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⠹⡎⣿⣿⣿",
-"⣭⣍⠛⠿⠄⢰⠋⡉⠹⣿⣿⣿⣿⣿⣿⠙⣿⣿⣿⣿⣿⣿⡟⢁⠙⡆⢡⣿⣿⣿",
-"⠻⣿⡆⠄⣤⠈⢣⣈⣠⣿⣿⣿⣿⣿⠏⣄⠻⣿⣿⣿⣿⣿⣆⣈⣴⠃⣿⣿⣿⣿",
-"⡀⠈⢿⠄⣿⡇⠄⠙⠿⣿⡿⠿⢋⣥⣾⣿⣷⣌⠻⢿⣿⣿⡿⠟⣡⣾⣿⣿⠿⢋",
-"⠛⠳⠄⢠⣿⠇⠄⣷⡑⢶⣶⢿⣿⣿⣿⣽⣿⣿⣿⣶⣶⡐⣶⣿⠿⠛⣩⡄⠄⢸",}
+"                 ....",
+"              d@@@@@@bo      @@.",
+"               ~~~~~ Y@@     Y@@.",
+"                   .o@@@@@b.  Y@@",
+"                  d@@@@@@@@@@b @P                     ...",
+"                 @P ~P~    @@@@P                    ,d@@@P---__",
+"                dP          d@P                    / @P        -dY@@b",
+"             t=_@  d ab   .o@@~      ...          / @@           \\ YP",
+"             |   - @_@~  .d@@@...++++++++++.......|______         |",
+"             k _  (__)  ~~Y@@@F+++++oo|oo+++++_-~~  /@   ~~---____|",
+"            ( Y |\\    ,T   Y@@OOOOOOO~^~OOO.-~ __.Ao@@b   a    .@@) __",
+"             \\  |_`--'     dP              \\---   V     @_@   d@@@ (_ \\   __",
+"           ...-_   ~-____-~                |      (   T (_),T   Y@F  ) v~~__)",
+"        ++++++++-___ )@@@b           ,')    `_     \\ ( \\_,'/     )++>k   <_",
+"       .+++oodOOOP__)@@@@@b      __  ( \\      ~--__ \\\\n  //__--ooCCU\\   _ \\",
+"   ..++++++OO    @@/@@@@@@@b    (_ ~~~ ,>.         ~~\\>~~v/     oCCP+++| |\\_)",
+".++++++odOOOP   @@/@@@@@@@@@@b    ~~> / r)@CCCCCCoooo(   )  .ooCCC~Obo+\\,+++.",
+"+++b\\OOP~~     @@/@@@@@@@@@@@@@b _r~v','     ~~CCCCCCC\\_/CCCCCCC~  ~~YOO/d+++",
+"+++OOO        @@/@@@P,>----.@@Y@(_>--'            CCCCCCCCCCCC~        OOO+++",
+"`++*OO       @@@@@P ((__-^-__)U@@@@@             dCCCCCCCCCCC          OO*++'",
+" +++OOb      @@@P....++++++++++++++++++++++++++++++++++*YCCCC         dOO+++",
+" `++OOO  ....+++++++++++++++| \\++/ |+/  \\+++|  \\+| |++++++++++++....  OOO++'",
+"  +++OO*+++++++++++++| |+| ||  \\/  |/ /\\ \\++|   \\| || |++/  \\++++++++*OO+++",
+" _+++++++++++++|   ~-| |+| ||      | ____ \\+| |\\_\\ || |+/ /\\ \\++/   )++++++_",
+"< ++++++/  \\+++| |-__   |+| |_|\\/|_|/++++\\ \\| |+\\  || |/ ____ \\/ /+++/ _ \\++>",
+" \\+++++/ /\\ \\++|  |++-__|+|_|+++++++@@+++d@_+_|++\\_||_|_/++++\\_| |++( (+\\/+/",
+"  \\+++/ ____ \\++| |+++++++++++++++++Y@b.@@+++++++++++++++++++++\\  )++\\ \\++/",
+"   \\++_/++++\\_+++++++oooOOOOODROOOOOb@@@@dOOGUZOOOOOoooooo+++++++++'\\/ /+/",
+"   \\+++++++++++++OOOOO~~~~~        ,-\\  /-.       ~~~~~~~OOOOOoo+++\\__/++/",
+"    \\++++++++OOP~   .              (_, O _/                 ~~OOOOO+++++/",
+"     \\+dOOOOOO.    | Y~.            (__d._)                   .OOOOOOb+/",
+"      OO(+++OOO.   | r.|    ....oood@@@@@@@@oooo@F           .OOO+++)OO",
+"       ~~O+++OOOo   Y ||   _Y@@@@@@P   ~V~  Y@@@@F          o000+++O~~",
+"          ~`++*OOb  | r_\\_/ _)@@@@@          @@@@f  __     ,--*++'~",
+"            `++*OOb. \\  `. / ~@@@@@    a a   @@@@  (_ `---'  ~~)'",
+"             ~+++OOOo `-._Y)   @@@@b   @_@  d@@@     lv'~   ~~+~",
+"               `++*OOb   (_@b   Y@~ T  (_) T   )   d@Uknnn+++'",
+"                ~+++OOOb    Yb.  (  |\\    /|  / od@P bdOO+++~",
+"                  `+++OOOb   Y@b  `-| `--',',d@@@P dOOO+++'",
+"                   ~++++OOOb   Y@b  \\\\nn //@@@@P dOOO++++~",
+"                     ~++++OOOb  ~@@@@\\`-'/@@@P~dOOO++++~",
+"                       ~++++OOOb  Y@@@@@@@@@~dOOO++++~",
+"                         ~++++*OObo@@@@@@@odOO*++++~",
+"                           ~~++++*OOOb|dOOO*++++~~",
+"                              ~~+++++*|*+++++~~",
+"                                  ~~+++++~~",                       
+"                                      ~",
+}  
 
 
 
