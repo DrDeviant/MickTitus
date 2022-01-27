@@ -33,8 +33,10 @@ grep "GRUB_THEME=" /etc/default/grub 2>&1 >/dev/null && sed -i '/GRUB_THEME=/d' 
 echo "GRUB_THEME=\"${THEME_DIR}/${THEME_NAME}/theme.txt\"" >> /etc/default/grub
 echo -e "Updating grub"
 grub-mkconfig -o /boot/grub/grub.cfg
-echo -e "All set!"
 
+echo -e "Setting qt5 theme"
+echo "XDG_CURRENT_DESKTOP=Dracula" >> /etc/environment
+echo -e "All set!"
 echo -ne "
 -------------------------------------------------------------------------
                     Enabling Login Display Manager
