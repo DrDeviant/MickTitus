@@ -19,6 +19,7 @@ echo -ne "
     source $SCRIPT_DIR/setup.conf
     bash 0-preinstall.sh
     arch-chroot /mnt /root/MickTitus/1-setup.sh
+    source $SCRIPT_DIR/setup.conf
     arch-chroot /mnt /usr/bin/runuser -u $USERNAME -- /home/$USERNAME/MickTitus/2-user.sh
     arch-chroot /mnt /root/MickTitus/3-post-setup.sh
 
