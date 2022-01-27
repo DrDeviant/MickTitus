@@ -15,7 +15,7 @@ echo -ne "
 Final Setup and Configurations
 GRUB EFI Bootloader Install & Check
 "
-source /root/ArchTitus/setup.conf
+source /root/MickTitus/setup.conf
 genfstab -U / >> /etc/fstab
 if [[ -d "/sys/firmware/efi" ]]; then
     grub-install --efi-directory=/boot ${DISK}

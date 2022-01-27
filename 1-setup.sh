@@ -113,12 +113,9 @@ elif grep -E "Integrated Graphics Controller" <<< ${gpu_type}; then
 elif grep -E "Intel Corporation UHD" <<< ${gpu_type}; then
     pacman -S libva-intel-driver libvdpau-va-gl lib32-vulkan-intel vulkan-intel libva-intel-driver libva-utils lib32-mesa --needed --noconfirm
 fi
-read -p "Please enter username:" username
 # convert name to lowercase before saving to setup.conf
-echo "username=${username}" >> ${HOME}/MickTitus/setup.conf
 #Set Password
-passwd $USERNAME
-read -p "Please name your machine:" nameofmachine
+passwd $username
 echo -ne "
 ----------------------------------------------------------------------
                     Adding User

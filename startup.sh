@@ -143,7 +143,12 @@ set_option DISK $option
 }
 # More features in future
 # language (){}
-
+userinfo () {
+read -p "Please enter your username: " username
+set_option USERNAME ${username,,} # convert to lower case as in issue #109 
+read -rep "Please enter your hostname: " nameofmachine
+set_option nameofmachine $nameofmachine
+}
 # Starting functions
 clear
 logo
@@ -154,3 +159,5 @@ clear
 timezone
 clear
 keymap
+clear
+userinfo
