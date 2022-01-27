@@ -20,15 +20,15 @@ set_option() {
 logo () {
 # This will be shown on every set as user is progressing
 echo -ne "
--------------------------------------------------------------------------
- █████╗ ██████╗  ██████╗██╗  ██╗████████╗██╗████████╗██╗   ██╗███████╗
-██╔══██╗██╔══██╗██╔════╝██║  ██║╚══██╔══╝██║╚══██╔══╝██║   ██║██╔════╝
-███████║██████╔╝██║     ███████║   ██║   ██║   ██║   ██║   ██║███████╗
-██╔══██║██╔══██╗██║     ██╔══██║   ██║   ██║   ██║   ██║   ██║╚════██║
-██║  ██║██║  ██║╚██████╗██║  ██║   ██║   ██║   ██║   ╚██████╔╝███████║
-╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝   ╚═╝   ╚═╝   ╚═╝    ╚═════╝ ╚══════╝
-------------------------------------------------------------------------
-            Please select presetup settings for your system              
+--------------------------------------------------------------------
+███╗░░░███╗██╗░█████╗░██╗░░██╗████████╗██╗████████╗██╗░░░██╗░██████╗
+████╗░████║██║██╔══██╗██║░██╔╝╚══██╔══╝██║╚══██╔══╝██║░░░██║██╔════╝
+██╔████╔██║██║██║░░╚═╝█████═╝░░░░██║░░░██║░░░██║░░░██║░░░██║╚█████╗░
+██║╚██╔╝██║██║██║░░██╗██╔═██╗░░░░██║░░░██║░░░██║░░░██║░░░██║░╚═══██╗
+██║░╚═╝░██║██║╚█████╔╝██║░╚██╗░░░██║░░░██║░░░██║░░░╚██████╔╝██████╔╝
+╚═╝░░░░░╚═╝╚═╝░╚════╝░╚═╝░░╚═╝░░░╚═╝░░░╚═╝░░░╚═╝░░░░╚═════╝░╚═════╝░
+--------------------------------------------------------------------  
+        Please select presetup settings for your system              
 ------------------------------------------------------------------------
 "
 }
@@ -109,8 +109,7 @@ set_option KEYMAP $keymap
 }
 
 drivessd () {
-echo -ne "
-Is this an ssd? yes/no:
+echo -ne " Is this an ssd? yes/no:
 "
 read ssd_drive
 
@@ -142,31 +141,16 @@ echo "DISK=$option" >> setup.conf
 drivessd
 set_option DISK $option
 }
-userinfo () {
-read -p "Please enter your username: " username
-set_option USERNAME ${username,,} # convert to lower case as in issue #109 
-echo -ne "Please enter your password: \n"
-read -s password # read password without echo
-set_option PASSWORD $password
-read -rep "Please enter your hostname: " nameofmachine
-set_option nameofmachine $nameofmachine
-}
 # More features in future
 # language (){}
 
 # Starting functions
 clear
 logo
-userinfo
-clear
-logo
 diskpart
 clear
-logo
 filesystem
 clear
-logo
 timezone
 clear
-logo
 keymap

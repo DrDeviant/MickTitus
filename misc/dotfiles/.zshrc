@@ -1,9 +1,5 @@
-export ZSH="$HOME/.local/plugin_managers/ohmyzsh"
-ZSH_THEME="candy"
-
 alias vim="lvim"
-
-echo "rht-vmctl start all"
+# echo "rht-vmctl start all"
 
 #Pacman and Yay
 alias pacman="yay"
@@ -52,7 +48,4 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.yarn-global:$PATH"
-
-source $ZSH/oh-my-zsh.sh
-
 
