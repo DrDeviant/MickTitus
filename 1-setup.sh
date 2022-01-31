@@ -17,26 +17,22 @@ source /root/MickTitus/setup.conf
 echo -ne "
 --------------------------------------------------------------------
                     Network Setup 
---------------------------------------------------------------------
-"
+--------------------------------------------------------------------"
 pacman -S networkmanager dhclient --noconfirm --needed
 systemctl enable --now NetworkManager
 echo -ne "
 ----------------------------------------------------------------------
                     Setting up mirrors for optimal download 
-----------------------------------------------------------------------
-"
+----------------------------------------------------------------------"
 pacman -S --noconfirm pacman-contrib curl
 pacman -S --noconfirm reflector rsync grub btrfs-progs arch-install-scripts git
-
 nc=$(grep -c ^processor /proc/cpuinfo)
 echo -ne "
 ----------------------------------------------------------------------
-                    You have " $nc" cores. And
-			changing the makeflags for "$nc" cores. Aswell as
-				changing the compression settings.
-----------------------------------------------------------------------
-"
+                       You have "$nc" cores.
+			         Changing the makeflags to "$nc" cores.
+                 Changing the compression settings.
+----------------------------------------------------------------------"
 TOTALMEM=$(cat /proc/meminfo | grep -i 'memtotal' | grep -o '[[:digit:]]*')
 if [[  $TOTALMEM -gt 8000000 ]]; then
 sed -i "s/#MAKEFLAGS=\"-j2\"/MAKEFLAGS=\"-j$nc\"/g" /etc/makepkg.conf
@@ -45,8 +41,7 @@ fi
 echo -ne "
 ----------------------------------------------------------------------
                     Setup Language to US and set locale  
-----------------------------------------------------------------------
-"
+----------------------------------------------------------------------"
 sed -i 's/^#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
 locale-gen
 timedatectl --no-ask-password set-timezone ${TIMEZONE}
@@ -72,8 +67,7 @@ pacman -Sy --noconfirm
 echo -ne "
 ----------------------------------------------------------------------
                     Installing Base System  
-----------------------------------------------------------------------
-"
+----------------------------------------------------------------------"
 cat /root/MickTitus/pkg-files/pacman-pkgs.txt | while read line 
 do
     echo "INSTALLING: ${line}"
@@ -82,8 +76,7 @@ done
 echo -ne "
 ----------------------------------------------------------------------
                     Installing Microcode
-----------------------------------------------------------------------
-"
+----------------------------------------------------------------------"
 # determine processor type and install microcode
 proc_type=$(lscpu)
 if grep -E "GenuineIntel" <<< ${proc_type}; then
@@ -99,8 +92,7 @@ fi
 echo -ne "
 ----------------------------------------------------------------------
                     Installing Graphics Drivers
-----------------------------------------------------------------------
-"
+----------------------------------------------------------------------"
 # Graphics Drivers find and install
 gpu_type=$(lspci)
 if grep -E "NVIDIA|GeForce" <<< ${gpu_type}; then
@@ -113,19 +105,58 @@ elif grep -E "Integrated Graphics Controller" <<< ${gpu_type}; then
 elif grep -E "Intel Corporation UHD" <<< ${gpu_type}; then
     pacman -S libva-intel-driver libvdpau-va-gl lib32-vulkan-intel vulkan-intel libva-intel-driver libva-utils lib32-mesa --needed --noconfirm
 fi
+
+#SETUP IS WRONG THIS IS RUN
+if ! source /root/MickTitus/setup.conf; then
+	# Loop through user input until the user gives a valid username
+	while true
+	do 
+		read -p "Please enter username:" username
+		# username regex per response here https://unix.stackexchange.com/questions/157426/what-is-the-regex-to-validate-linux-users
+		# lowercase the username to test regex
+		if [[ "${username,,}" =~ ^[a-z_]([a-z0-9_-]{0,31}|[a-z0-9_-]{0,30}\$)$ ]]
+		then 
+			break
+		fi 
+		echo "Incorrect username."
+	done 
 # convert name to lowercase before saving to setup.conf
-#Set Password
-passwd $username
+echo "username=${username,,}" >> ${HOME}/MickTitus/setup.conf
+
+    #Set Password
+    read -p "Please enter password:" password
+echo "password=${password,,}" >> ${HOME}/MickTitus/setup.conf
+
+    # Loop through user input until the user gives a valid hostname, but allow the user to force save 
+	while true
+	do 
+		read -p "Please name your machine:" nameofmachine
+		# hostname regex (!!couldn't find spec for computer name!!)
+		if [[ "${nameofmachine,,}" =~ ^[a-z][a-z0-9_.-]{0,62}[a-z0-9]$ ]]
+		then 
+			break 
+		fi 
+		# if validation fails allow the user to force saving of the hostname
+		read -p "Hostname doesn't seem correct. Do you still want to save it? (y/n)" force 
+		if [[ "${force,,}" = "y" ]]
+		then 
+			break 
+		fi 
+	done 
+
+    echo "nameofmachine=${nameofmachine,,}" >> ${HOME}/MickTitus/setup.conf
+fi
 echo -ne "
 ----------------------------------------------------------------------
                     Adding User
-----------------------------------------------------------------------
-"
+----------------------------------------------------------------------"
 if [ $(whoami) = "root"  ]; then
     useradd -m -G wheel,docker -s /bin/zsh $USERNAME 
 
+# use chpasswd to enter $USERNAME:$password
+    echo "$USERNAME:$PASSWORD" | chpasswd
 	cp -R /root/MickTitus /home/$USERNAME/
-  chown -R $USERNAME: /home/$USERNAME/MickTitus
+    chown -R $USERNAME: /home/$USERNAME/MickTitus
 # enter $nameofmachine to /etc/hostname
 	echo $nameofmachine > /etc/hostname
 else
@@ -141,5 +172,4 @@ fi
 echo -ne "
 ----------------------------------------------------------------------
                     SYSTEM READY FOR 2-user.sh
-----------------------------------------------------------------------
-"
+----------------------------------------------------------------------"

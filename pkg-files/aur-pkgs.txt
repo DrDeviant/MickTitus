@@ -4,5 +4,7 @@ brave-bin
 candy-icons-git
 dbeaver
 rider
+i3lock-fancy-git
+wmctrl
 dracula-gtk-theme
 dracula-grub-theme-git

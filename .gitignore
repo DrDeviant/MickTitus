@@ -2,3 +2,4 @@ installlog.txt
 docker-compose.yml
 docker-compose.yaml
 install.conf
+setup.conf

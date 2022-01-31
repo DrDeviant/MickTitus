@@ -92,14 +92,14 @@ local globalKeys =
     {description = 'Switch to previous window', group = 'client'}
   ),
   -- Programms
-  -- awful.key(
-  --   {modkey},
-  --   'l',
-  --   function()
-  --     awful.spawn(apps.default.lock)
-  --   end,
-  --   {description = 'Lock the screen', group = 'awesome'}
-  -- ),
+  awful.key(
+    {modkey},
+    'l',
+    function()
+      awful.spawn(apps.default.lock)
+    end,
+    {description = 'Lock the screen', group = 'awesome'}
+  ),
   awful.key(
     {modkey},
     'Print',
@@ -291,7 +291,7 @@ local globalKeys =
     end,
     {description = '-10%', group = 'hotkeys'}
   ),
-  -- ALSA volume control
+  -- PulseAudio volume control
   awful.key(
     {},
     'XF86AudioRaiseVolume',
@@ -362,37 +362,12 @@ local globalKeys =
     end,
     {description = 'Open default program for tag/workspace', group = 'tag'}
   ),
-  -- Custom hotkeys
-  -- vfio integration
-  awful.key(
-    {'Control',altkey},
-    'space',
-    function()
-      awful.util.spawn_with_shell('vm-attach attach')
-    end
-  ),
-  -- Lutris hotkey
-  awful.key(
-    {modkey},
-    'g',
-    function()
-      awful.util.spawn_with_shell('lutris')
-    end
-  ),
   -- System Monitor hotkey
   awful.key(
     {modkey},
     'm',
     function()
       awful.util.spawn_with_shell('mate-system-monitor')
-    end
-  ),
-  -- Kill VLC
-  awful.key(
-    {modkey},
-    'v',
-    function()
-      awful.util.spawn_with_shell('killall -9 vlc')
     end
   ),
   -- File Manager
@@ -410,7 +385,7 @@ local globalKeys =
     'a',
     function()
       awful.util.spawn_with_shell('ibus emoji')
-    end,
+   end,
     {description = 'Open the ibus emoji picker to copy an emoji to your clipboard', group = 'hotkeys'}
   )
 )
