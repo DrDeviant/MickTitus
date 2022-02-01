@@ -30,7 +30,6 @@ lvim.leader = "space"
   --   },
 -- }
 -- lvim.builtin.notify
-
 lvim.builtin.which_key.mappings["w"] = {
   name = "+Save",
   w = {"<cmd>w<CR>", "Save"},

@@ -1,8 +1,9 @@
 # Path to your oh-my-zsh configuration.
 export ZSH="$HOME/.local/ohmyzsh"
 ZSH_THEME="candy"
+# PS1="\[\e[1;38;2;255;105;97m\][\[\e[m\]\[\e[1;38;2;255;179;71m\]\u\[\e[m\]\[\e[1;38;2;253;253;150m\]@\[\e[m\]\[\e[1;38;2;119;221;119m\]\h\[\e[m\] \[\e[1;38;2;174;198;207m\]\W\[\e[m\]\[\e[1;38;2;134;134;175m\]]\[\e[1m\]\[\e[1;38;2;203;153;201m\]\\$\[\e[m\] "
 
-alias vim="lvim"
+alias v="lvim"
 # echo "rht-vmctl start all"
 
 #Pacman and Yay

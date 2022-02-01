@@ -1,4 +1,3 @@
-mesa # Essential Xorg First
 
 # Xorg Display Stuff
 xorg
