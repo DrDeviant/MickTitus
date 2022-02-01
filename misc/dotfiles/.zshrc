@@ -5,7 +5,7 @@ ZSH_THEME="candy"
 
 alias v="lvim"
 # echo "rht-vmctl start all"
-
+pfetch
 #Pacman and Yay
 alias pacman="yay"
 alias upgrade="yay -Syu"

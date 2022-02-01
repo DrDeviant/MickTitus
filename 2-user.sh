@@ -43,10 +43,9 @@ npm config set prefix '~/.npm-global'
 export PATH=~/.npm-global/bin:$PATH
 source $HOME/.zshrc
 
-# Figure this out you fat cunt
 sh $HOME/MickTitus/LunarVim.sh
 ln -sf $HOME/MickTitus/misc/configs/config.lua $HOME/.config/lvim/config.lua
-
+$HOME/.local/bin/lvim -c PackerSync
 yay -S --noconfirm --needed - < ~/MickTitus/pkg-files/aur-pkgs.txt
 pip install black isort
 
