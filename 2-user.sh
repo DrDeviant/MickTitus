@@ -19,13 +19,11 @@ git clone "https://aur.archlinux.org/yay.git"
 cd $HOME/yay
 makepkg -si --noconfirm
 cd $HOME
-git clone https://github.com/ohmyzsh/ohmyzsh.git 
-mkdir -p $HOME/.config/kitty/
+mkdir -p $HOME/.config/{kitty,rofi}
 ln -sf "$HOME/MickTitus/misc/dotfiles/.zshrc" "$HOME/.zshrc" 
 ln -sf "$HOME/MickTitus/misc/configs/kitty.conf" "$HOME/.config/kitty/kitty.conf"
 ln -sf "$HOME/MickTitus/misc/configs/awesome" "$HOME/.config/"
 
-mkdir -p $HOME/.config/rofi
 cp $HOME/.config/awesome/theme/config.rasi $HOME/.config/rofi/config.rasi
 sed -i '/@theme/c\@theme "'$HOME'/.config/awesome/theme/sidebar.rasi"' ~/.config/rofi/config.rasi
 
@@ -52,6 +50,5 @@ pip install black isort
 echo -ne "
 ----------------------------------------------------------------------
                     SYSTEM READY FOR 3-post-setup.sh
-----------------------------------------------------------------------
-"
+----------------------------------------------------------------------"
 exit

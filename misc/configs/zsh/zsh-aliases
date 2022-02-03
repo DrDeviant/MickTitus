@@ -1,0 +1,35 @@
+#!/bin/sh
+alias l='ls -lah'
+alias g='lazygit'
+alias v="lvim"
+
+# Colorize grep output (good for log files)
+alias grep='grep --color=auto'
+
+# confirm before overwriting something
+alias cp="cp -i"
+alias mv='mv -i'
+alias rm='rm -i'
+
+#Pacman and Yay
+alias pacman="yay"
+alias upgrade="yay -Syu"
+alias cleanup='sudo pacman -Rns $(pacman -Qtdq)' 
+
+# easier to read disk
+alias df='df -h'     # human-readable sizes
+alias free='free -m' # show sizes in MB
+
+#Distro info
+alias distro='cat /etc/*-release'
+alias myip='curl ipv4.icanhazip.com'
+
+# gpg encryption
+# verify signature for isos
+alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
+# receive the key of a developer
+alias gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
+
+# For when keys break
+alias archlinx-fix-keys="sudo pacman-key --init && sudo pacman-key --populate archlinux && sudo pacman-key --refresh-keys"
+
