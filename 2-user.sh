@@ -36,6 +36,17 @@ Host *
   IdentityFile ~/.ssh/github
 " >> $HOME/.ssh/config
 
+echo -ne "
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Terminal=false
+Exec=$HOME/MickTitus/misc/macros/rofi-bluetooth
+Name=Rofi Bluetooth
+Icon=/usr/share/icons/candy-icons/apps/scalable/org.kde.plasma.bluetooth.svg
+" > $HOME/.local/share/applications/rofiBT.desktop
+
 mkdir ~/.npm-global
 npm config set prefix '~/.npm-global'
 export PATH=~/.npm-global/bin:$PATH

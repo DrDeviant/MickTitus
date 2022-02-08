@@ -1,6 +1,4 @@
 #!/bin/bash
-
-# Find the name of the folder the scripts are in
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 echo -ne "
 --------------------------------------------------------------------

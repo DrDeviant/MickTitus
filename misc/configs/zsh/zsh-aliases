@@ -1,4 +1,5 @@
 #!/bin/sh
+alias ls='ls --color=auto'
 alias l='ls -lah'
 alias g='lazygit'
 alias v="lvim"
