@@ -6,6 +6,15 @@ local hotkeys_popup = require('awful.hotkeys_popup').widget
 local modkey = require('configuration.keys.mod').modKey
 local altkey = require('configuration.keys.mod').altKey
 local apps = require('configuration.apps')
+-- local layout_indicator = require("keyboard")
+
+-- kbdcfg = layout_indicator({
+--     layouts = {
+--         {name="ru",  layout="ru",  variant=nil},
+--         {name="us",  layout="us",  variant=nil}
+--     },
+-- })
+
 -- Key bindings
 local globalKeys =
   awful.util.table.join(
