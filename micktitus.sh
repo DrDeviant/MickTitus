@@ -16,9 +16,9 @@ echo -ne "
     bash startup.sh
     source $SCRIPT_DIR/setup.conf
     bash 0-preinstall.sh
-    arch-chroot /mnt /root/MickTitus/1-setup.sh
-    arch-chroot /mnt /usr/bin/runuser -u $USERNAME -- /home/$USERNAME/MickTitus/2-user.sh
-    arch-chroot /mnt /root/MickTitus/3-post-setup.sh
+    arch-chroot /mnt /root/MickTitus/scripts/1-setup.sh
+    arch-chroot /mnt /usr/bin/runuser -u $USERNAME -- /home/$USERNAME/MickTitus/scripts/2-user.sh
+    arch-chroot /mnt /root/MickTitus/scripts/3-post-setup.sh
 
 echo -ne "
 --------------------------------------------------------------------

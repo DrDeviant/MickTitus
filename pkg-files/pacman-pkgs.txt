@@ -1,4 +1,3 @@
-
 # Xorg Display Stuff
 xorg
 xorg-server
@@ -11,7 +10,6 @@ xfce4-power-manager
 picom
 xclip
 lightdm
-polkit-gnome
 feh
 flameshot 
 network-manager-applet
@@ -19,7 +17,6 @@ xfce4-power-manager
 noto-fonts-emoji
 pamixer
 rofi  
-picom
 pasystray
 pavucontrol
 lxappearance
@@ -33,10 +30,8 @@ lollypop
 
 # Printers
 cups
-cups-pdf
 
 # Dev Stuff
-aspnet-runtime
 dotnet-sdk
 docker
 docker-compose
@@ -50,53 +45,44 @@ rust
 
 
 accountsservice
-autoconf 
-automake 
 base
+base-devel
 gnome-keyring
 bind
 btrfs-progs
 discord
 dosfstools
-dtc
 efibootmgr
 exfat-utils
 extra-cmake-modules
-flex
+prettier
 fuse2
 fuse3
-gcc
 gptfdisk
 grub
 gst-libav
 gst-plugins-good
 gst-plugins-ugly
 haveged
-htop
 iptables-nft
 kitty
 libdvdcss
 libnewt
-libtool
 linux-firmware
 linux-zen
 linux-zen-headers
 lsof
 m4
-make
 networkmanager
 ntp
 openssh
 os-prober
 p7zip
 pacman-contrib
-patch
-pkgconf
 python-pip
 rsync
 sshfs
 snapper
-sudo
 ttf-iosevka-nerd
 unrar
 unzip

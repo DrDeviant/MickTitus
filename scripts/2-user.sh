@@ -15,26 +15,27 @@ Installing AUR Softwares"
 source $HOME/MickTitus/setup.conf
 
 cd $HOME
-git clone "https://aur.archlinux.org/yay.git"
-cd $HOME/yay
+git clone "https://aur.archlinux.org/paru.git"
+cd $HOME/paru
 makepkg -si --noconfirm
 cd $HOME
-mkdir -p $HOME/.config/{kitty,rofi}
-ln -sf "$HOME/MickTitus/misc/dotfiles/.zshrc" "$HOME/.zshrc" 
-ln -sf "$HOME/MickTitus/misc/configs/kitty.conf" "$HOME/.config/kitty/kitty.conf"
-ln -sf "$HOME/MickTitus/misc/configs/awesome" "$HOME/.config/"
-
+mkdir -p $HOME/.config/rofi
+ln -sf "$HOME/MickTitus/misc/configs/{awesome,nvim,kitty}" "$HOME/.config/"
 cp $HOME/.config/awesome/theme/config.rasi $HOME/.config/rofi/config.rasi
 sed -i '/@theme/c\@theme "'$HOME'/.config/awesome/theme/sidebar.rasi"' ~/.config/rofi/config.rasi
 
 mkdir $HOME/.ssh/
 chmod 700 $HOME/.ssh
+echo -ne "Host *
+Host github.com
+  PreferredAuthentications publickey
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/github" >> $HOME/.ssh/config
+
 echo -ne "
-Host *
-  AddKeysToAgent yes
-  IdentityFile ~/.ssh/external
-  IdentityFile ~/.ssh/github
-" >> $HOME/.ssh/config
+export ZDOTDIR=$HOME/MickTitus/misc/configs/zsh
+source $ZDOTDIR/.zshrc" > $HOME/.zshrc
 
 echo -ne "
 [Desktop Entry]
@@ -42,24 +43,20 @@ Encoding=UTF-8
 Version=1.0
 Type=Application
 Terminal=false
-Exec=$HOME/MickTitus/misc/macros/rofi-bluetooth
+Exec=/$HOME/MickTitus/misc/macros/rofi-bluetooth
 Name=Rofi Bluetooth
-Icon=/usr/share/icons/candy-icons/apps/scalable/org.kde.plasma.bluetooth.svg
-" > $HOME/.local/share/applications/rofiBT.desktop
+Icon=/usr/share/icons/candy-icons/apps/scalable/org.kde.plasma.bluetooth.svg" > $HOME/.local/share/applications/rofiBT.desktop
 
 mkdir ~/.npm-global
 npm config set prefix '~/.npm-global'
 export PATH=~/.npm-global/bin:$PATH
 source $HOME/.zshrc
 
-sh $HOME/MickTitus/LunarVim.sh
-ln -sf $HOME/MickTitus/misc/configs/config.lua $HOME/.config/lvim/config.lua
-$HOME/.local/bin/lvim -c PackerSync
-yay -S --noconfirm --needed - < ~/MickTitus/pkg-files/aur-pkgs.txt
-pip install black isort
-
+paru -S --noconfirm --needed - < ~/MickTitus/pkg-files/aur-pkgs.txt
+pip install black isort pynvim
+npm install i -g neovim
 echo -ne "
-----------------------------------------------------------------------
+-------------------- --------------------------------------------------
                     SYSTEM READY FOR 3-post-setup.sh
 ----------------------------------------------------------------------"
 exit

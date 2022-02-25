@@ -2,7 +2,8 @@ lightdm-webkit-theme-aether
 qt5-styleplugins
 brave-bin
 candy-icons-git
-dbeaver
+datagrip
+datagrip-jre
 rider
 i3lock-fancy-git
 wmctrl

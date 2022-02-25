@@ -39,5 +39,5 @@ __[Arch Linux Installation Guide](https://github.com/rickellis/Arch-Linux-Instal
 ## Credits
 
 - Original packages script was a post install cleanup script called ArchMatic located here: https://github.com/rickellis/ArchMatic
-- The original ArchTItus Script was "borrowed" from Chris Titus, https://github.com/ChrisTitusTech/ArchTitus
+- The original ArchTitus Script was "borrowed" from Chris Titus, https://github.com/ChrisTitusTech/ArchTitus
 
